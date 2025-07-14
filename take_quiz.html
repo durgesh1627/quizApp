@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Take Quiz - Quiz App</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .quiz-box {
+            background-color: #ffffff;
+            padding: 30px 40px;
+            width: 500px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        #timer {
+            font-size: 18px;
+            font-weight: bold;
+            color: #dc3545;
+            margin-bottom: 15px;
+        }
+
+        .option {
+            margin: 12px 0;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.1);
+        }
+
+        input[type="submit"] {
+            margin-top: 25px;
+            padding: 12px 20px;
+            font-size: 16px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .back:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-box">
+    <!-- ⏱️ Timer Display -->
+    <div id="timer">Time Left: 60s</div>
+
+    <form action="SubmitAnswerServlet" method="post" id="quizForm">
+        <h2>Question 1: What is the capital of India?</h2>
+
+        <div class="option">
+            <input type="radio" name="answer" value="1" required> Delhi
+        </div>
+        <div class="option">
+            <input type="radio" name="answer" value="2"> Mumbai
+        </div>
+        <div class="option">
+            <input type="radio" name="answer" value="3"> Kolkata
+        </div>
+        <div class="option">
+            <input type="radio" name="answer" value="4"> Chennai
+        </div>
+
+        <!-- Hidden Inputs -->
+        <input type="hidden" name="question_id" value="1">
+        <input type="hidden" name="total" value="1">
+
+        <input type="submit" value="Submit Answer">
+    </form>
+
+    <a class="back" href="dashboard.html">← Back to Dashboard</a>
+</div>
+
+<!-- ✅ Timer Script -->
+<script>
+    let timeLeft = 60;
+    let timer = document.getElementById("timer");
+
+    let countdown = setInterval(() => {
+        timeLeft--;
+        timer.innerText = "Time Left: " + timeLeft + "s";
+
+        if (timeLeft <= 0) {
+            clearInterval(countdown);
+            alert("⏰ Time's up! Auto-submitting your quiz.");
+            document.getElementById("quizForm").submit();
+        }
+    }, 1000);
+</script>
+
+</body>
+</html>

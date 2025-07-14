@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            width: 350px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .logout {
+            background-color: #dc3545;
+        }
+
+        .logout:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🛠️ Admin Dashboard</h2>
+
+    <a class="btn" href="add_question.html">➕ Add Question</a>
+    <a class="btn" href="update_question.html">🖊️ Update Question</a>
+    <a class="btn" href="delete_question.html">❌ Delete Question</a>
+    <a class="btn" href="leaderboard.html">📊 View User Scores</a>
+    <a class="btn logout" href="index.html">🔚 Logout</a>
+</div>
+
+</body>
+</html>

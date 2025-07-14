@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Question</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .delete-box {
+            background: white;
+            padding: 35px;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #c82333;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="delete-box">
+    <h2>❌ Delete Question</h2>
+    <form action="DeleteQuestionServlet" method="post">
+        <label>Enter Question ID to Delete:</label>
+        <input type="number" name="id" required>
+
+        <input type="submit" value="Delete Question">
+    </form>
+
+    <a href="dashboard.html">← Back to Dashboard</a>
+</div>
+
+</body>
+</html>

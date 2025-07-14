@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Update Question</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-box {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 500px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #ffc107;
+            color: black;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #e0a800;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-box">
+    <h2>🖊️ Update Question</h2>
+    <form action="EditQuestionServlet" method="post">
+        <label>Question ID:</label>
+        <input type="number" name="id" required>
+
+        <label>Question:</label>
+        <textarea name="question" rows="3" required></textarea>
+
+        <label>Option 1:</label>
+        <input type="text" name="opt1" required>
+
+        <label>Option 2:</label>
+        <input type="text" name="opt2" required>
+
+        <label>Option 3:</label>
+        <input type="text" name="opt3" required>
+
+        <label>Option 4:</label>
+        <input type="text" name="opt4" required>
+
+        <label>Correct Option (1-4):</label>
+        <select name="correct" required>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+        </select>
+
+        <input type="submit" value="Update Question">
+    </form>
+</div>
+
+</body>
+</html>

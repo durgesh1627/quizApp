@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Quiz Scores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .score-box {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form input[type="submit"] {
+            padding: 12px 25px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            display: block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="score-box">
+    <h2>View Your Previous Scores</h2>
+    <form action="ViewScoreServlet" method="post">
+        <input type="submit" value="Show My Scores">
+    </form>
+    <a href="dashboard.html">← Back to Dashboard</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz App - Login/Register</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin: 15px 0;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    .toggle-text {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .toggle-text span {
+      color: #007bff;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* 👇 Role button styling */
+    .role-btn {
+      padding: 10px 20px;
+      margin: 5px;
+      border: 1px solid #007bff;
+      background-color: white;
+      color: #007bff;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .role-btn.active {
+      background-color: #007bff;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2 id="form-title">Login</h2>
+
+  <form id="authForm" action="AuthServlet" method="post">
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" name="username" required>
+    </div>
+
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" name="password" required>
+    </div>
+
+    <div class="form-group" id="emailField" style="display: none;">
+      <label>Email</label>
+      <input type="email" name="email">
+    </div>
+
+    <div class="form-group" id="confirmPasswordField" style="display: none;">
+      <label>Confirm Password</label>
+      <input type="password" name="confirmPassword">
+    </div>
+
+    <!-- 👇 Role selection using buttons -->
+    <div class="form-group" style="text-align: center;">
+      <label style="display: block; margin-bottom: 10px;"></label>
+      <input type="hidden" name="role" id="roleInput" value="user">
+      <button type="button" class="role-btn active" onclick="selectRole('user')">User</button>
+      <button type="button" class="role-btn" onclick="selectRole('admin')">Admin</button>
+    </div>
+
+    <input type="hidden" name="mode" id="formMode" value="login">
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div class="toggle-text">
+    <span id="toggleLink">Don't have an account? Register here</span>
+  </div>
+</div>
+
+<!-- ✅ JavaScript -->
+<script>
+  const toggleLink = document.getElementById('toggleLink');
+  const formTitle = document.getElementById('form-title');
+  const emailField = document.getElementById('emailField');
+  const confirmPasswordField = document.getElementById('confirmPasswordField');
+  const formMode = document.getElementById('formMode');
+
+  let isLogin = true;
+
+  toggleLink.addEventListener('click', () => {
+    isLogin = !isLogin;
+
+    if (isLogin) {
+      formTitle.innerText = 'Login';
+      emailField.style.display = 'none';
+      confirmPasswordField.style.display = 'none';
+      toggleLink.innerText = "Don't have an account? Register here";
+      formMode.value = 'login';
+    } else {
+      formTitle.innerText = 'Register';
+      emailField.style.display = 'block';
+      confirmPasswordField.style.display = 'block';
+      toggleLink.innerText = "Already have an account? Login here";
+      formMode.value = 'register';
+    }
+  });
+
+  function selectRole(role) {
+    document.getElementById("roleInput").value = role;
+
+    const buttons = document.querySelectorAll(".role-btn");
+    buttons.forEach(btn => btn.classList.remove("active"));
+
+    if (role === 'user') {
+      buttons[0].classList.add("active");
+    } else {
+      buttons[1].classList.add("active");
+    }
+  }
+</script>
+
+</body>
+</html>
